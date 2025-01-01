@@ -1,0 +1,792 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Great+Vibes&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Jersey+25&family=Jost:ital,wght@0,100..900;1,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Overpass:wght@100..900&family=Playball&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Saira+Extra+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Sedan:ital@0;1&family=Slabo+27px&display=swap');
+
+body {
+  font-family: Inter;
+}
+.hotkey {
+  font-size: 0.6rem;
+  color: #000000;
+  background-color: #cecece;
+  font-weight: bold;
+  padding: 0 0.5rem;
+  height: 20px;
+  border-radius: 0.25rem;
+  font-family: monospace;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.2rem;
+}
+
+/* PWA TOAST STYLES */
+.pwa-toast {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 16px;
+  padding: 12px;
+  border: 1px solid #8885;
+  border-radius: 4px;
+  z-index: 1;
+  text-align: left;
+  box-shadow: 3px 4px 5px 0 #8885;
+  background-color: white;
+}
+.pwa-toast .message {
+  margin-bottom: 8px;
+}
+.pwa-toast button {
+  border: 1px solid #8885;
+  outline: none;
+  margin-right: 5px;
+  border-radius: 2px;
+  padding: 3px 10px;
+}
+
+/* FONT FAMILY CLASSES */
+.inter {
+  font-family: "Inter", sans-serif;
+}
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+.overpass {
+  font-family: "Overpass", sans-serif;
+}
+.playfair-display {
+  font-family: "Playfair Display", serif;
+}
+.sedan {
+  font-family: "Sedan", serif;
+}
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+.jersey-25 {
+  font-family: "Jersey 25", sans-serif;
+}
+.raleway {
+  font-family: "Raleway", sans-serif;
+}
+.nunito {
+  font-family: "Nunito", sans-serif;
+}
+.ibm-plex-sans {
+  font-family: "IBM Plex Sans", sans-serif;
+}
+.bebas-neue {
+  font-family: "Bebas Neue", sans-serif;
+}
+.jost {
+  font-family: "Jost", sans-serif;
+}
+.eb-garamond {
+  font-family: "EB Garamond", sans-serif;
+}
+.dancing-script {
+  font-family: "Dancing Script", cursive, sans-serif;
+}
+.slabo {
+  font-family: "Slabo", sans-serif;
+}
+.ibm-plex-serif {
+  font-family: "IBM Plex Serif", serif;
+}
+.great-vibes {
+  font-family: "Great Vibes", cursive, sans-serif;
+}
+.playball {
+  font-family: "Playball", cursive, sans-serif;
+}
+.saira-extra-condensed {
+  font-family: "Saira Extra Condensed", serif;
+}
+.lato {
+  font-family: "Lato", sans-serif;
+}
+
+.slides-grid {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+.bg-stretch {
+  background-size: 100% 100%;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+
+/* TRANSITIONS START */
+.smooth-behavior {
+  scroll-behavior: smooth;
+}
+.fade-sm-enter-active,
+.fade-sm-leave-active {
+  transition: opacity 0.3s ease;
+  -webkit-transition: opacity 0.3s ease;
+  -moz-transition: opacity 0.3s ease;
+  -ms-transition: opacity 0.3s ease;
+  -o-transition: opacity 0.3s ease;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s ease;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -ms-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+}
+
+.fade-sm-enter-from,
+.fade-sm-leave-to,
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.list-move, /* apply transition to moving elements */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+  -webkit-transform: translateX(30px);
+  -moz-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  -o-transform: translateX(30px);
+}
+
+.list-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+  -webkit-transform: translateX(-30px);
+  -moz-transform: translateX(-30px);
+  -ms-transform: translateX(-30px);
+  -o-transform: translateX(-30px);
+}
+
+/* ensure leaving items are taken out of layout flow so that moving
+   animations can be calculated correctly. */
+.list-leave-active {
+  position: absolute;
+  top: 0.8rem;
+}
+
+
+.fade-list-move, /* apply transition to moving elements */
+.fade-list-enter-active,
+.fade-list-leave-active {
+  transition: all 0.7s ease;
+  -webkit-transition: all 0.7s ease;
+  -moz-transition: all 0.7s ease;
+  -ms-transition: all 0.7s ease;
+  -o-transition: all 0.7s ease;
+  position: absolute;
+}
+
+.fade-list-leave-to {
+  opacity: 0;
+  position: absolute;
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+}
+
+.fade-list-enter-from {
+  opacity: 0;
+  position: absolute;
+  /* transition: 0.1s ease; */
+ 
+}
+.fade-list-leave-active {
+  position: absolute;
+}
+
+.zoom-list-move, /* apply transition to moving elements */
+.zoom-list-enter-active,
+.zoom-list-leave-active {
+  transition: transform 0.7s ease;
+  -webkit-transition: transform 0.7s ease;
+  -moz-transition: transform 0.7s ease;
+  -ms-transition: transform 0.7s ease;
+  -o-transition: transform 0.7s ease;
+}
+
+.zoom-list-leave-to {
+  /*opacity: 0;
+  */transform: scale(1) translate(0);
+  -webkit-transform: scale(1) translate(0) ;
+  -moz-transform: scale(1) translate(0);
+  -ms-transform: scale(1) translate(0);
+  -o-transform: scale(1) translate(0);
+}
+
+.zoom-list-enter-from {
+  /*opacity: 0;
+  */transform: scale(0) translate(0);
+  -webkit-transform: scale(0) translate(0);
+  -moz-transform: scale(0) translate(0);
+  -ms-transform: scale(0) translate(0);
+  -o-transform: scale(0) translate(0);
+}
+.zoom-list-leave-active {
+  position: absolute;
+}
+
+/* ANIMATIONS */
+.come-up-1 {
+  animation: come-up 0.3s ease-in-out forwards ;
+  -webkit-animation: come-up 0.3s ease-in-out forwards;
+}
+.come-up-2 {
+  animation: come-up 0.6s ease-in-out forwards;
+  -webkit-animation: come-up 0.6s ease-in-out forwards;
+}
+.no-animations {
+  .come-up-1 {
+    animation: none;
+    -webkit-animation: none;
+  }
+  .come-up-2 {
+    animation: none;
+    -webkit-animation: none;
+  }
+}
+
+@keyframes come-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+  }
+}
+.marquee {
+  width: 100%;
+  font-size: 3vw;
+  line-height: 5vw;
+	color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.marquee > .inner {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee linear infinite;
+  -webkit-animation: marquee linear infinite;
+}
+@keyframes marquee {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); -webkit-transform: translate(-100%, 0); -moz-transform: translate(-100%, 0); -ms-transform: translate(-100%, 0); -o-transform: translate(-100%, 0); }
+}
+/* TRANSITIONS END */
+
+.overlay-gradient {
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 50%,
+    rgba(0, 0, 0, 0.7) 70%,
+    rgb(0, 0, 0) 100%
+  );
+}
+
+/* TIPTAP STYLES */
+.tiptap {
+  min-height: 90px;
+  padding: 1rem;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  border: 1px solid #f3e8ff;
+}
+.tiptap:focus-within {
+  outline-color: #e9d5ff;
+}
+.tiptap > * + * {
+  margin-top: 0.75em;
+}
+
+.tiptap ul {
+  padding: 0 1rem;
+  list-style-type: initial;
+}
+
+.tiptap ol {
+  padding: 0 1rem;
+  list-style-type: decimal;
+}
+
+.tiptap h1,
+.tiptap h2,
+.tiptap h3,
+.tiptap h4,
+.tiptap h5,
+.tiptap h6 {
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+.tiptap h1 {
+  font-size: 2.125rem;
+}
+
+.tiptap h2 {
+  font-size: 1.875rem;
+}
+
+.tiptap h3 {
+  font-size: 1.5rem;
+}
+
+.tiptap h4 {
+  font-size: 1.25rem;
+}
+
+.tiptap h5 {
+  font-size: 1rem;
+}
+
+.tiptap h6 {
+  font-size: 0.75rem;
+}
+
+.tiptap code {
+  background-color: rgba(97, 97, 97, 0.1);
+  color: #616161;
+}
+
+.tiptap pre {
+  background: #0d0d0d;
+  color: #fff;
+  font-family: "JetBrainsMono", monospace;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+}
+
+.mono {
+  font-family: "JetBrainsMono", monospace;
+}
+
+.tiptap pre code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 0.8rem;
+}
+
+.tiptap img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tiptap blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid rgba(13, 13, 13, 0.1);
+}
+
+.tiptap hr {
+  border: none;
+  border-top: 2px solid rgba(13, 13, 13, 0.1);
+  margin: 2rem 0;
+}
+
+.tiptap p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap h1::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* LIVE CONTENT */
+.live-output {
+  color: #ffffff;
+  user-select: none;
+  /* background-color: #000000; */
+}
+.left-live-content {
+  text-align: left;
+}
+.right-live-content {
+  text-align: right;
+}
+.center-live-content {
+  text-align: center;
+}
+.tiptap.live-content {
+  padding: 0.75rem;
+  border-radius: 0;
+  border: 0;
+  font-size: 3vw;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.tiptap.live-content .scripture-content {
+  font-weight: 500;
+}
+.tiptap.live-content .song-content {
+  font-weight: 600;
+}
+.tiptap.live-content .countdown-content {
+  font-weight: 600;
+}
+.tiptap.live-content:focus-within {
+  outline-color: #e9d5ff;
+}
+.tiptap.live-content > * + * {
+  margin-top: 0.75em;
+}
+
+.tiptap.live-content ul {
+  padding: 0 1rem;
+  list-style-type: initial;
+}
+
+.tiptap.live-content ol {
+  padding: 0 1rem;
+  list-style-type: decimal;
+}
+
+.tiptap.live-content h1,
+.tiptap.live-content h2,
+.tiptap.live-content h3,
+.tiptap.live-content h4,
+.tiptap.live-content h5,
+.tiptap.live-content h6 {
+  line-height: 1.4;
+  font-weight: 600;
+  margin: 2vw 0;
+}
+
+.tiptap.live-content h1 {
+  font-size: 6vw;
+}
+
+.tiptap.live-content h2 {
+  font-size: 5.5vw;
+}
+
+.tiptap.live-content h3 {
+  font-size: 5vw;
+}
+
+.tiptap.live-content h4 {
+  font-size: 4.7vw;
+}
+
+.tiptap.live-content code {
+  background-color: rgba(97, 97, 97, 0.1);
+  color: #616161;
+}
+
+.tiptap.live-content pre {
+  background: #0d0d0d;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 2%;
+  -webkit-border-radius: 0.5rem;
+  -moz-border-radius: 0.5rem;
+  -ms-border-radius: 0.5rem;
+  -o-border-radius: 0.5rem;
+}
+
+.tiptap.live-content pre code {
+  color: inherit;
+  padding: 0;
+  background: none;
+  font-size: 2.5vw;
+}
+
+.tiptap.live-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tiptap.live-content blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid rgba(13, 13, 13, 0.1);
+}
+
+.tiptap.live-content hr {
+  border: none;
+  border-top: 2px solid rgba(13, 13, 13, 0.1);
+  margin: 2rem 0;
+}
+
+.tiptap.live-content p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap.live-content h1::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.tiptap.live-content .scripture-label {
+  margin-top: 3%;
+  font-size: 2vw;
+}
+
+.tiptap.live-content .song-label {
+  margin-top: 3%;
+  font-size: 1.5vw;
+}
+
+.tiptap.live-content .countdown-label {
+  margin-top: 5%;
+  font-size: 3vw;
+}
+
+.tiptap.live-content .copyright-content {
+  font-size: 1vw;
+  margin-top: 1%;
+  max-width: 50%;
+  color: #ffffff80;
+}
+
+.center-live-content .copyright-content {
+  margin-right: auto;
+  margin-left: auto;
+}
+.right-live-content .copyright-content {
+  margin-left: auto;
+}
+.tiptap.live-content blockquote {
+  border-left: 5px solid #ffffff80;
+  padding-left: 5%;
+}
+
+
+/* LIVE CONTENT LG PREVIEW */
+.lg-preview .slide-layout-ctn {
+  min-height: calc(220px - 24px);
+}
+.lg-preview .tiptap.live-content {
+  font-size: 0.8vw;
+  line-height: 1.1vw;
+}
+.lg-preview .tiptap.live-content .scripture-content,
+.lg-preview .tiptap.live-content .countdown-content,
+.lg-preview .tiptap.live-content .song-content {
+  font-size: 0.8vw !important;
+  line-height: 1.1vw !important;
+}
+
+.lg-preview .tiptap.live-content .scripture-label,
+.lg-preview .tiptap.live-content .countdown-label,
+.lg-preview .tiptap.live-content .song-label {
+  font-size: 0.5vw;
+}
+
+.lg-preview .tiptap.live-content .copyright-content {
+  font-size: 0.3vw;
+  line-height: 1.2;
+}
+
+.tiptap.live-content p {
+  min-height: 2ch;
+}
+
+.lg-preview .tiptap.live-content h1,
+.lg-preview .tiptap.live-content h2,
+.lg-preview .tiptap.live-content h3,
+.lg-preview .tiptap.live-content h4,
+.lg-preview .tiptap.live-content h5,
+.lg-preview .tiptap.live-content h6 {
+  margin: 0.5vw 0;
+}
+
+.lg-preview .tiptap.live-content h1 {
+  font-size: 1.5vw;
+}
+
+.lg-preview .tiptap.live-content h2 {
+  font-size: 1.3vw;
+}
+
+.lg-preview .tiptap.live-content h3 {
+  font-size: 1.15vw;
+}
+
+.lg-preview .tiptap.live-content h4 {
+  font-size: 1vw;
+}
+.lg-preview .tiptap.live-content blockquote {
+  border-left-width: 1px;
+}
+
+/* LIVE CONTENT MD PREVIEW */
+.md-preview .slide-layout-ctn {
+  min-height: 95px;
+}
+.md-preview .tiptap.live-content {
+  font-size: 0.4vw;
+  line-height: 0.6vw;
+}
+
+.md-preview .tiptap.live-content .scripture-label,
+.md-preview .tiptap.live-content .countdown-label,
+.md-preview .tiptap.live-content .song-label {
+  font-size: 0.15vw;
+}
+
+.md-preview .tiptap.live-content .copyright-content {
+  font-size: 0.05vw;
+  line-height: 1.2;
+}
+
+.md-preview .tiptap.live-content .scripture-content,
+.md-preview .tiptap.live-content .countdown-content,
+.md-preview .tiptap.live-content .song-content {
+  font-size: 0.4vw !important;
+  line-height: 0.6vw !important;
+}
+
+.md-preview .tiptap.live-content h1,
+.md-preview .tiptap.live-content h2,
+.md-preview .tiptap.live-content h3,
+.md-preview .tiptap.live-content h4,
+.md-preview .tiptap.live-content h5,
+.md-preview .tiptap.live-content h6 {
+  margin: 0.3vw 0;
+}
+
+.md-preview .tiptap.live-content h1 {
+  font-size: 0.7vw;
+}
+
+.md-preview .tiptap.live-content h2 {
+  font-size: 0.6vw;
+}
+
+.md-preview .tiptap.live-content h3 {
+  font-size: 0.5vw;
+}
+
+.md-preview .tiptap.live-content h4 {
+  font-size: 0.4vw;
+}
+.md-preview .tiptap.live-content blockquote {
+  border-left-width: 1px;
+}
+
+/* LIVE CONTENT SM PREVIEW */
+.sm-preview .slide-layout-ctn {
+  height: 45px;
+}
+.sm-preview .tiptap.live-content {
+  font-size: 0.2vw;
+  line-height: 0.3vw;
+}
+
+.sm-preview .tiptap.live-content .scripture-content,
+.sm-preview .tiptap.live-content .countdown-content,
+.sm-preview .tiptap.live-content .song-content {
+  font-size: 0.2vw !important;
+  line-height: 0.3vw !important;
+}
+
+.sm-preview .tiptap.live-content .scripture-label,
+.sm-preview .tiptap.live-content .countdown-label,
+.sm-preview .tiptap.live-content .song-label {
+  font-size: 0.2vw;
+}
+
+.sm-preview .tiptap.live-content .copyright-content {
+  font-size: 0.1vw;
+  line-height: 1.2;
+}
+
+.sm-preview .tiptap.live-content h1,
+.sm-preview .tiptap.live-content h2,
+.sm-preview .tiptap.live-content h3,
+.sm-preview .tiptap.live-content h4,
+.sm-preview .tiptap.live-content h5,
+.sm-preview .tiptap.live-content h6 {
+  margin: 0.2vw 0;
+}
+
+.sm-preview .tiptap.live-content h1 {
+  font-size: 0.4vw;
+}
+
+.sm-preview .tiptap.live-content h2 {
+  font-size: 0.35vw;
+}
+
+.sm-preview .tiptap.live-content h3 {
+  font-size: 0.3vw;
+}
+
+.sm-preview .tiptap.live-content h4 {
+  font-size: 0.25vw;
+}
+.sm-preview .tiptap.live-content blockquote {
+  border-left-width: 1px;
+}
+
+@media screen and (min-width: 1500px) {
+  .marquee {
+    font-size: 2vw;
+    line-height: 3.7vw;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .marquee {
+    font-size: 1.5vw;
+    line-height: 2.7vw;
+  }
+}
