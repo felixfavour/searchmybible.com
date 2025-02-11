@@ -40,6 +40,10 @@ export const useAppStore = defineStore('app', {
   state: () => {
     return {
       currentState: {
+        emitter: null,
+        settings: {
+          defaultBibleVersion: 'KJV',
+        },
       },
       // Undo/Redo stacks
       pastStates: [],
@@ -48,8 +52,14 @@ export const useAppStore = defineStore('app', {
   },
   getters: {},
   actions: {
+    setEmitter(emitter: Emitter) {
+      this.currentState.emitter = emitter
+    },
     signOut() {
       posthog.reset()
+    },
+    setAppSettings(settings: { defaultBibleVersion: string }) {
+      this.currentState.settings = settings
     },
     // Undo/Redo Actions
     setCurrentState(state: any) {

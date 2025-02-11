@@ -10,6 +10,8 @@
 
 <script setup lang="ts">
 import mitt from "mitt"
+import useDetailedFetch from "./composables/useDetailedFetch"
+import useIndexedDB from "./composables/useIndexedDB"
 import { useAppStore } from "./store/app"
 
 const nuxtApp = useNuxtApp()
@@ -19,6 +21,40 @@ nuxtApp.provide("emitter", emitter)
 appStore.setEmitter(emitter)
 
 const appVersion = ref<string>("1.0.0")
+const loadingResources = ref<boolean>(true)
+const downloadResource = ref<string>("")
+const downloadStep = ref<number>(0)
+const downloadProgress = ref()
+
+const tempBibleVersion = (version: string, data: any) => ({
+  id: version,
+  data,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+})
+
+const downloadEssentialResources = async () => {
+  const db = useIndexedDB()
+  loadingResources.value = true
+
+  // DOWNLOAD KJV
+  let tempBible = await db.bibleAndHymns.get("KJV")
+  if (!tempBible) {
+    downloadResource.value = "KJV Bible"
+    downloadStep.value = 3
+
+    let kjvBible = await useDetailedFetch(
+      `https://d37gopmfkl2m2z.cloudfront.net/open/bible-versions/kjv.json`,
+      downloadProgress
+    )
+    kjvBible = await kjvBible.json()
+    db.bibleAndHymns.add(tempBibleVersion("KJV", kjvBible))
+  }
+
+  loadingResources.value = false
+}
+
+downloadEssentialResources()
 </script>
 
 <style>

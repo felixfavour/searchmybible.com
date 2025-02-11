@@ -6,6 +6,6 @@
 
 <script setup lang="ts">
 useHead({
-  title: "Untitled App",
+  title: "Bible Search Offline",
 })
 </script>
