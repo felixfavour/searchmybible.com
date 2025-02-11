@@ -101,7 +101,6 @@ export default defineNuxtConfig({
     "@vite-pwa/nuxt",
     "nuxt-tiptap-editor",
     "@pinia/nuxt",
-    "pinia-plugin-persistedstate/nuxt",
     "nuxt-gtag",
     "@nuxthub/core"
   ],
