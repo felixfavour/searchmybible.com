@@ -138,9 +138,9 @@ export default defineNuxtConfig({
     },
 
     manifest: {
-      name: "Untitled App",
-      short_name: "Untitled",
-      description: "Untitled App",
+      name: "Search My Bible",
+      short_name: "searchmybible.com",
+      description: "Bible Offline Search using Full Text Search",
       theme_color: "#a855f7",
       start_url: "/",
       display: "fullscreen",

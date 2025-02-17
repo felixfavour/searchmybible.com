@@ -1,6 +1,6 @@
-# Boilerplate for PWA Nuxt Apps - Untitled App 
+# Search My Bible
 
-![Untitled App](https://favourfelix.com)
+![Search My Bible](https://favourfelix.com)
 
 ## Features
 
@@ -14,4 +14,4 @@
 - Vite
 
 ## License
-Untitled App is licensed under the [GNU General Public License v3.0](https://github.com/felixfavour/minimalist-church-presentation-software/blob/master/LICENSE).
+Search My Bible is licensed under the [GNU General Public License v3.0](https://github.com/felixfavour/minimalist-church-presentation-software/blob/master/LICENSE).
