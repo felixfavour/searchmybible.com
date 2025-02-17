@@ -1,76 +1,85 @@
 <template>
-  <div class="search-bible-main min-h-[80vh] h-[100%]" ref="quickActions">
-    <div class="flex gap-2">
-      <UInput
-        icon="i-bx-search"
-        :placeholder="getPlaceholderByFilter()"
-        v-model="searchInput"
-        class="w-[100%]"
-        @input="onSearchInput"
-        @input.capture="loading = true"
-        @keyup.enter="getVerses($event.target.value)"
-      />
-      <UButton icon="i-bx-x" color="primary" @click="$emit('close')"></UButton>
-    </div>
-
-    <!-- CHIP GROUP -->
-    <div class="button-row flex flex-nowrap my-4 gap-1 pb-2">
-      <UButton
-        :variant="selectedFilter === 'old' ? 'solid' : 'outline'"
-        @click="selectedFilter = 'old'"
-      >
-        Old Test...
-      </UButton>
-      <UButton
-        :variant="selectedFilter === 'new' ? 'solid' : 'outline'"
-        @click="selectedFilter = 'new'"
-      >
-        New Test...
-      </UButton>
-      <USelectMenu
-        :variant="
-          selectedFilter === '' ||
-          selectedFilter === 'old' ||
-          selectedFilter === 'new'
-            ? 'outline'
-            : 'solid'
-        "
-        color="black"
-        placeholder="Bible book"
-        v-model="selectedFilter"
-        searchable
-        :ui="{
-          variant: {
-            outline:
-              'focus:ring-0 ring-0 text-primary font-medium border border-primary shadow-none',
-            solid:
-              'focus:ring-0 ring-0 text-white font-medium border-0 shadow-none bg-primary-500',
-          },
-        }"
-        :options="bibleBooks"
-      >
-        <template #label>
-          <span
-            v-if="
-              selectedFilter?.length &&
-              !(
-                selectedFilter === '' ||
-                selectedFilter === 'old' ||
-                selectedFilter === 'new'
-              )
-            "
-            class="truncate w-12 lg:max-w-20"
-            >{{ selectedFilter }}</span
-          >
-          <span v-else>Book</span>
-        </template>
-      </USelectMenu>
-    </div>
-
+  <div
+    class="search-bible-main h-[100%] w-full max-w-[600px] mx-auto"
+    ref="quickActions"
+  >
     <div
-      v-if="loading"
-      class="actions-ctn mt-2 overflow-y-auto max-h-[calc(100vh-260px)]"
+      class="heading sticky top-0 pt-4 pb-2 z-10 gap-2 transition-all bg-slate-50 dark:bg-slate-900"
     >
+      <h1 class="text-2xl font-semibold mb-4">Search the Bible, offline.</h1>
+      <div class="flex gap-2">
+        <UInput
+          icon="i-bx-search"
+          :placeholder="getPlaceholderByFilter()"
+          v-model="searchInput"
+          class="w-[100%]"
+          @input="onSearchInput"
+          @input.capture="loading = true"
+          @keyup.enter="getVerses($event.target.value)"
+        />
+        <UButton
+          icon="i-bx-x"
+          color="primary"
+          @click="$emit('close')"
+        ></UButton>
+      </div>
+
+      <!-- CHIP GROUP -->
+      <div class="button-row flex flex-nowrap my-4 gap-1 pb-2">
+        <UButton
+          :variant="selectedFilter === 'old' ? 'solid' : 'outline'"
+          @click="selectedFilter = 'old'"
+        >
+          Old Test...
+        </UButton>
+        <UButton
+          :variant="selectedFilter === 'new' ? 'solid' : 'outline'"
+          @click="selectedFilter = 'new'"
+        >
+          New Test...
+        </UButton>
+        <USelectMenu
+          :variant="
+            selectedFilter === '' ||
+            selectedFilter === 'old' ||
+            selectedFilter === 'new'
+              ? 'outline'
+              : 'solid'
+          "
+          color="black"
+          placeholder="Bible book"
+          v-model="selectedFilter"
+          searchable
+          :ui="{
+            variant: {
+              outline:
+                'focus:ring-0 ring-0 text-primary font-medium border border-primary shadow-none',
+              solid:
+                'focus:ring-0 ring-0 text-white font-medium border-0 shadow-none bg-primary-500',
+            },
+          }"
+          :options="bibleBooks"
+        >
+          <template #label>
+            <span
+              v-if="
+                selectedFilter?.length &&
+                !(
+                  selectedFilter === '' ||
+                  selectedFilter === 'old' ||
+                  selectedFilter === 'new'
+                )
+              "
+              class="truncate w-12 lg:max-w-20"
+              >{{ selectedFilter }}</span
+            >
+            <span v-else>Book</span>
+          </template>
+        </USelectMenu>
+      </div>
+    </div>
+
+    <div v-if="loading" class="actions-ctn mt-2 overflow-y-auto">
       <USkeleton
         v-for="i in 15"
         :key="i"
@@ -79,7 +88,7 @@
     </div>
     <template v-else>
       <!-- SEARCHING BIBLE VERSES -->
-      <div class="actions-ctn mt-2 overflow-y-auto max-h-[calc(100vh-260px)]">
+      <div class="actions-ctn mt-2 overflow-y-auto pb-8">
         <ActionCard
           v-for="(verse, index) in verses"
           :key="`verse ${index}`"

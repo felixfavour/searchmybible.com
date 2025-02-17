@@ -1,5 +1,10 @@
 <template>
-  <button
+  <a
+    :href="`https://bible.com/bible/${bibleVersionCode}/${action?.name
+      ?.replaceAll(' ', '')
+      ?.substring(0, 3)}.${action?.bibleChapterAndVerse?.replace(/:/g, '.')}`"
+    target="_blank"
+    rel="noopener noreferrer"
     class="action-card flex gap-3 p-2 py-4 border-t first:border-t-0 border-gray-100 dark:border-primary-950 hover:rounded-md hover:bg-primary-50 dark:hover:bg-primary-800 transition-all cursor-pointer text-left w-[100%]"
     :class="{ 'pointer-events-none opacity-30': action?.unreleased }"
     @click="
@@ -21,9 +26,7 @@
         </span>
         <span class="font-semibold">
           {{ action?.name || "" }}
-          <span v-if="action?.type === slideTypes.bible">{{
-            action?.bibleChapterAndVerse || ""
-          }}</span>
+          {{ action?.bibleChapterAndVerse || "" }}
         </span>
       </h4>
       <h4 v-else class="font-semibold">
@@ -31,12 +34,15 @@
       </h4>
       <p class="font-light text-xs mt-1">{{ action?.desc || "" }}</p>
     </div>
-  </button>
+  </a>
 </template>
 <script setup lang="ts">
 import { computed } from "vue"
 import type { QuickAction } from "~/types"
 import useGlobalEmit from "../composables/useGlobalEmit"
+
+const bibleVersion = ref<string>("NKJV")
+const bibleVersionCode = ref<string>("114")
 
 const props = defineProps<{
   action: QuickAction
