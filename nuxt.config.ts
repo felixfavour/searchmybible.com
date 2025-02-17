@@ -99,7 +99,6 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/ui",
     "@vite-pwa/nuxt",
-    "nuxt-tiptap-editor",
     "@pinia/nuxt",
     "nuxt-gtag",
     "@nuxthub/core"
@@ -119,10 +118,6 @@ export default defineNuxtConfig({
     compilerOptions: {
       isCustomElement: (tag: string) => false,
     },
-  },
-
-  tiptap: {
-    prefix: "Tiptap",
   },
 
   pinia: {
