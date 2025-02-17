@@ -9,19 +9,19 @@ export default defineNuxtConfig({
         lang: "en",
       },
       viewport: "initial-scale=1",
-      title: "Untitled App - Your church's powerpoint",
+      title: "Search My Bible - Search the Bible, offline.",
       meta: [
         {
           name: "description",
           content:
-            "Simple and easy to use church presentation software that grows with your church needs. Untitled App is your church's power point.",
+            "Search the Bible, offline. Search My Bible is a study tool to help you find verses you can remember but not fully.",
         },
         { name: "format-detection", content: "telephone=no" },
         { hid: "og:type", property: "og:type", content: "website" },
         {
           hid: "og-url",
           name: "og:url",
-          content: "https://cloudofworship.com",
+          content: "https://searchmybible.com",
         },
         {
           hid: "og:image",
@@ -36,18 +36,18 @@ export default defineNuxtConfig({
         {
           hid: "twitter:domain",
           name: "twitter:domain",
-          content: "cloudofworship.com",
+          content: "searchmybible.com",
         },
         {
           hid: "twitter:description",
           name: "twitter:description",
           content:
-            "Simple and easy to use church presentation software that grows with your church needs. Untitled App is your church's power point.",
+            "Search the Bible, offline. Search My Bible is a study tool to help you find verses you can remember but not fully.",
         },
         {
           hid: "twitter:url",
           name: "twitter:url",
-          content: "https://cloudofworship.com",
+          content: "https://searchmybible.com",
         },
       ],
       link: [
@@ -146,17 +146,17 @@ export default defineNuxtConfig({
       display: "fullscreen",
       icons: [
         {
-          src: "/cloud-w-144.png",
+          src: "/smb-144.png",
           sizes: "144x144",
           type: "image/png",
         },
         {
-          src: "/cloud-w-192.png",
+          src: "/smb-192.png",
           sizes: "192x192",
           type: "image/png",
         },
         {
-          src: "/cloud-w-512.png",
+          src: "/smb-512.png",
           sizes: "512x512",
           type: "image/png",
         },

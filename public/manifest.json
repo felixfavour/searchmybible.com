@@ -1,23 +1,23 @@
 {
-  "name": "Untitled App",
-  "short_name": "Untitled",
-  "description": "Untitled App",
+  "name": "Search My Bible",
+  "short_name": "searchmybible.com",
+  "description": "Bible Offline Search using Full Text Search",
   "theme_color": "#ffffff",
   "start_url": "/",
   "display": "fullscreen",
   "icons": [
     {
-      "src": "/cloud-w-144.png",
+      "src": "/smb-144.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "/cloud-w-192.png",
+      "src": "/smb-192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/cloud-w-512.png",
+      "src": "/smb-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
